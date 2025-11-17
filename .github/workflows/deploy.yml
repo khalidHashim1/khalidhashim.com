@@ -15,6 +15,18 @@ jobs:
         uses: actions/checkout@v3
 
 
+      ###########################################
+      # DEBUG STEP (BEFORE S3 SYNC)
+      ###########################################
+      - name: Debug AWS environment (S3 Step)
+        run: |
+          echo "===== DEBUG INFO ====="
+          echo "AWS_REGION: ${{ secrets.AWS_REGION }}"
+          echo "AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}"
+          echo "SOURCE_DIR: frontend"
+          echo "======================="
+
+
       ##############################
       # 1. UPLOAD FRONTEND TO S3   #
       ##############################
@@ -26,9 +38,22 @@ jobs:
           AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: ${{ secrets.AWS_REGION }}
+          AWS_REGION: ${{ secrets.AWS_REGION }}   # MUST BE "eu-north-1"
           SOURCE_DIR: "frontend"
 
+
+
+      ###########################################
+      # DEBUG STEP (BEFORE LAMBDA DEPLOY)
+      ###########################################
+      - name: Debug AWS environment (Lambda Step)
+        run: |
+          echo "===== DEBUG INFO ====="
+          echo "AWS_REGION: ${{ secrets.AWS_REGION }}"
+          echo "LAMBDA_FUNCTION_NAME: ${{ secrets.LAMBDA_FUNCTION_NAME }}"
+          echo "Backend path exists?:"
+          ls -l backend
+          echo "======================="
 
 
       ##############################
@@ -55,8 +80,9 @@ jobs:
           echo "Lambda deployment completed."
 
 
+
       ###########################################
-      # 3. INVALIDATE CLOUDFRONT CACHE          #
+      # 3. INVALIDATE CLOUDFRONT CACHE
       ###########################################
       - name: Invalidate CloudFront cache
         env:
