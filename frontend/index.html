@@ -1,327 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
+
+  <!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ETJEC17YGM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-ETJEC17YGM');
+</script>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Khalid Adil Hashim - CV</title>
+  <title>Esther Domfeh | Cloud & DevOps Engineer</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
-    /* -------------------------
-       Base Styles & Variables
-    -------------------------- */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    :root {
-      --primary-color: #2b2d42;
-      --accent-color: #0077b6;
-      --background: #f8f9fa;
-      --button-bg: #0077b6;
-      --text-color: #333;
-    }
-
     body {
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      background: var(--background);
-      color: var(--text-color);
-      line-height: 1.6;
-      margin: 0 auto;
-      max-width: 900px;
-      padding: 20px;
+      font-family: 'Fira Code', monospace;
+      background-color: #0d1117;
+      color: #c9d1d9;
+      position: relative;
+      overflow-x: hidden;
+    }
+    .accent {
+      color: #58a6ff;
+    }
+    .card {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 10px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 15px rgba(56, 139, 253, 0.2);
+    }
+    .link-hover:hover {
+      color: #58a6ff;
     }
 
-    /* -------------------------
-       Header
-    -------------------------- */
-    header {
-      text-align: center;
-      margin-bottom: 2rem;
+    /* 🌌 Star Background Styles */
+    .stars {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
     }
 
-    header h1 {
-      color: var(--primary-color);
-      font-size: 2.2rem;
+    .star {
+      position: absolute;
+      background: white;
+      width: 2px;
+      height: 2px;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: twinkle 3s infinite ease-in-out;
     }
 
-    header p {
-      color: #555;
-      font-size: 1.1rem;
-    }
-
-    /* -------------------------
-       Sections
-    -------------------------- */
-    section {
-      background: #fff;
-      margin: 20px 0;
-      padding: 20px 25px;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-    }
-
-    h2 {
-      color: var(--primary-color);
-      border-bottom: 2px solid var(--accent-color);
-      display: inline-block;
-      padding-bottom: 4px;
-      margin-bottom: 12px;
-    }
-
-    /* -------------------------
-       Buttons
-    -------------------------- */
-    .btn-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 12px;
-    }
-
-    .btn {
-      background: var(--button-bg);
-      color: #fff;
-      text-decoration: none;
-      padding: 10px 18px;
-      border-radius: 8px;
-      transition: all 0.3s ease;
-      font-weight: 500;
-    }
-
-    .btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 16px rgba(0, 119, 182, 0.3);
-    }
-
-    /* -------------------------
-       Lists
-    -------------------------- */
-    ul {
-      margin-left: 20px;
-      margin-top: 8px;
-    }
-
-    ul li {
-      margin-bottom: 6px;
-    }
-
-    /* -------------------------
-       Job Experience
-    -------------------------- */
-    .job h3 {
-      color: var(--accent-color);
-    }
-
-    .job p {
-      font-weight: 500;
-      color: #444;
-      margin-top: 4px;
-      margin-bottom: 6px;
-    }
-
-    /* -------------------------
-       Footer
-    -------------------------- */
-    footer {
-      text-align: center;
-      margin-top: 40px;
-      font-size: 0.9rem;
-      color: #777;
-    }
-
-    /* -------------------------
-       Responsive Design
-    -------------------------- */
-    @media (max-width: 600px) {
-      body {
-        padding: 10px;
-      }
-
-      .btn-container {
-        flex-direction: column;
-      }
-
-      header h1 {
-        font-size: 1.8rem;
-      }
-    }
-
-    /* -------------------------
-       Print Styling (Optional)
-    -------------------------- */
-    @media print {
-      body {
-        background: #fff;
-        color: #000;
-      }
-      section {
-        box-shadow: none;
-        border: 1px solid #ccc;
-      }
-      .btn-container {
-        display: none;
-      }
-      footer {
-        margin-top: 20px;
-      }
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.2; }
+      50% { opacity: 1; }
     }
   </style>
-	  <!-- Google tag (gtag.js) -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-ETJEC17YGM"></script>
-	<script>
-	  window.dataLayer = window.dataLayer || [];
-	  function gtag(){dataLayer.push(arguments);}
-	  gtag('js', new Date());
-
-	  gtag('config', 'G-ETJEC17YGM');
-	  
-	  
-			<!-- API in aws tag (gtag.js) -->
-				fetch("https://4bpzs727p7.execute-api.us-east-1.amazonaws.com/log", {
-		  method: "POST",
-		  headers: {
-			"Content-Type": "application/json"
-		  },
-		  body: JSON.stringify({
-			id: crypto.randomUUID(),  // generates a unique id (browser support required)
-			referrer: document.referrer,
-			section: window.location.hash || "/",
-			eventType: "pageview"
-		  })
-		});
-
-
-	</script>
 </head>
 
-<body>
-  <!-- ========================
-       HEADER
-  ========================== -->
-  <header>
-    <h1>Khalid Adil Hashim</h1>
-    <p>Technical Support | AWS CCP | CLF-C02 </p>
+<body class="min-h-screen flex flex-col">
+  <!-- Star Background -->
+  <div class="stars"></div>
+
+  <!-- Navigation -->
+  <header class="py-4 border-b border-gray-700 sticky top-0 bg-[#0d1117]/90 backdrop-blur z-10">
+    <div class="max-w-6xl mx-auto flex justify-between items-center px-4">
+      <h1 class="text-xl font-bold accent">esther.dev</h1>
+      <nav class="space-x-6 text-gray-400">
+        <a href="#about" class="link-hover">About</a>
+        <a href="#projects" class="link-hover">Projects</a>
+        <a href="#contact" class="link-hover">Contact</a>
+      </nav>
+    </div>
   </header>
 
-  <!-- ========================
-       CONTACT
-  ========================== -->
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:khalidhashim1422@gmail.com">khalidhashim1422@gmail.com</a></p>
-    <p>Phone: <a href="tel:0558056375">0558056375</a></p>
-    <p>Location: Riyadh, Saudi Arabia</p>
-
-    <div class="btn-container">
-      <a class="btn" href="KhalidAdilHashim-CV.pdf?v=1" download>📄 Download CV</a>
-      <a class="btn" href="contactForm.html" target="_blank" >✉️ Contact Me</a>
-      <a class="btn" href="https://github.com/khalidHashim1" target="_blank" rel="noopener noreferrer">💻 GitHub</a>
-      <a class="btn" href="https://www.linkedin.com/in/khalid-binhashim-8639a7271/" target="_blank" rel="noopener noreferrer">🔗 LinkedIn</a>
+   <!-- Hero with animated particle background -->
+<section class="relative text-center py-20 bg-gray-900 overflow-hidden z-10">
+  <div id="particles-js" class="absolute inset-0"></div>
+  
+  <div class="relative z-10 max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-8 px-6">
+    
+    <!-- Profile Image -->
+    <img src="myPicture.jpeg" alt="esther's profile pic"
+         class="w-40 h-40 rounded-full border-4 border-cyan-400 shadow-lg object-cover">
+    
+    <!-- Text Content -->
+    <div>
+      <h2 class="text-5xl font-bold text-white mb-4">Hi, I’m Esther Domfeh</h2>
+      <p class="text-lg text-gray-300">
+        Aspiring <span class="text-cyan-300">Cloud & DevOps Engineer</span>  <br />
+        I design automated, scalable, and secure systems.
+      </p>
     </div>
-
-  <!-- ========================
-       PROFESSIONAL SUMMARY
-  ========================== -->
-  <section id="summary">
-    <h2>Professional Summary</h2>
-    <p>
-      Technical Support with a Computer Science background and an AWS Cloud Practitioner certification. Skilled in troubleshooting and system optimization, with a strong interest in cloud technologies and infrastructure automation.
-    </p>
-  </section>
-
-  <!-- ========================
-       EXPERIENCE
-  ========================== -->
-  <section id="experience">
-    <h2>Professional Experience</h2>
-
-    <div class="job">
-      <h3>Technical Support Specialist</h3>
-      <p><strong>CCC by STC – Security Operations Center (911)</strong> | Riyadh | <em>Aug 2024 – Present</em></p>
-      <ul>
-        <li>Manage technical issues via ticketing system and perform hardware troubleshooting.</li>
-        <li>Ensure uninterrupted 911 operations by resolving incidents promptly or escalating as needed.</li>
-      </ul>
-    </div>
-
-    <div class="job">
-      <h3>Technical Support Level 2</h3>
-      <p><strong>Tasheel Information Technology – Ministry of Interior Project</strong> | <em>Oct 2023 – Aug 2024</em></p>
-      <ul>
-        <li>Delivered technical support and training for Ministry of Interior systems.</li>
-        <li>Coordinated between clients and developers to meet business requirements efficiently.</li>
-        <li>Enhanced issue resolution process to increase client satisfaction.</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- ========================
-       SKILLS
-  ========================== -->
-  <section id="skills">
-    <h2>Technical Skills</h2>
-    <ul>
-      <li>Technical Support & Troubleshooting</li>
-      <li>Hardware Maintenance & System Configuration</li>
-      <li>Ticketing Systems & Client Communication</li>
-      <li>Cloud Computing (AWS Certified Cloud Practitioner)</li>
-    </ul>
-  </section>
-
-  <!-- ========================
-       CERTIFICATIONS
-  ========================== -->
-  <section id="certifications">
-  <h2>Certifications</h2>
-  <ul>
-    <li>
-      <strong>
-        <a href="https://www.credly.com/badges/c6cf68a9-9081-4d56-93d0-9e1be4468b94/linked_in?t=t02mp7" target="_blank" rel="noopener noreferrer">
-          AWS Certified Cloud Practitioner
-        </a>
-      </strong> — Amazon Web Services (2024)
-    </li>
-  </ul>
+  </div>
 </section>
 
-
-  <!-- ========================
-       EDUCATION
-  ========================== -->
-  <section id="education">
-    <h2>Education</h2>
-    <p>
-      <strong>Bachelor of Computer Science</strong><br />
-      Prince Sattam Bin Abdulaziz University, Al-Kharj, Saudi Arabia<br />
-      Graduated: 2023 | GPA: Very Good
+  <!-- About -->
+  <section id="about" class="max-w-4xl mx-auto px-6 py-16 z-10 relative">
+    <h3 class="text-2xl font-bold mb-6 accent">About Me</h3>
+    <p class="text-gray-400 leading-relaxed">
+      I'm a Computer Science Master's student with a deep interest in <span class="accent">cloud computing, CI/CD pipelines, and DevOps culture</span>.  
+      My goal is to bridge the gap between development and operations by using automation tools like <span class="accent">Terraform, Docker, and Jenkins</span> to create reliable and efficient cloud systems.  
+      <br><br>
+      I'm currently preparing for the <span class="accent">AWS Certified Cloud Practitioner</span> certification and actively building hands-on projects to strengthen my real-world skills.
     </p>
   </section>
 
-  <!-- ========================
-       PROJECTS
-  ========================== -->
-  <section id="projects">
-    <h2>Projects</h2>
-    <ul>
-		  <li><strong>Portfolio Website:</strong> Personal site showcasing professional profile and projects.</li>
-		  <li><strong>Mood Tracker:</strong> Mood Tracker hosted using EC2 instance. <a href="https://moodtracker1.khalidhashim.com/" target="_blank" rel="noopener noreferrer">Mood Tracker</a>. </li>
-		  <li><strong>Inventory Manager:</strong> Serverless inventory app hosted on S3 with API Gateway, Lambda, DynamoDB, and CloudFront. <a href="https://inverntory.khalidhashim.com/" target="_blank" rel="noopener noreferrer">Inventory Manager</a>.</li>
-		  <li><strong>Text-to-Speech with AWS Polly:</strong> Serverless app converting text to speech with AWS Polly, S3, Lambda, and CloudFront. <a href="https://texttospeach.khalidhashim.com/" target="_blank" rel="noopener noreferrer">Text to Speech</a>.</li>		
-		  <li><strong>Other Projects:</strong> Available on my
-        <a href="https://github.com/khalidHashim1" target="_blank" rel="noopener noreferrer">GitHub Profile</a>.
-      </li>
-    </ul>
-  </section>
-  
+  <!-- Projects -->
+  <section id="projects" class="bg-[#161b22] py-20 relative z-10">
+    <div class="max-w-5xl mx-auto px-6">
+      <h3 class="text-2xl font-bold mb-10 accent text-center">Projects</h3>
+      <div class="grid md:grid-cols-2 gap-6">
+        
+        <div class="card p-6">
+          <h4 class="text-xl font-semibold mb-2 text-white">AWS S3 Portfolio Hosting</h4>
+          <p class="text-gray-400 mb-3">
+            Deployed this portfolio site using Amazon S3 for hosting and CloudFront for global distribution, implementing IAM policies for secure public access.
+          </p>
+          <a href="https://bit.ly/4qLHDiT" class="accent hover:underline">View on GitHub →</a>
+        </div>
 
-  <!-- ========================
-       FOOTER
-  ========================== -->
-  <footer>
-    <p>© 2025 Khalid Adil Hashim. Hosted using S3 & CloudFront .</p>
+        <div class="card p-6">
+          <h4 class="text-xl font-semibold mb-2 text-white">Terraform Infrastructure Automation</h4>
+          <p class="text-gray-400 mb-3">
+            Built reusable Terraform modules to automate provisioning of EC2 instances, S3 buckets, and IAM roles following Infrastructure as Code (IaC) best practices.
+          </p>
+          <a href="#" class="accent hover:underline">View on GitHub →</a>
+        </div>
+
+        <div class="card p-6">
+          <h4 class="text-xl font-semibold mb-2 text-white">Dockerized Web App</h4>
+          <p class="text-gray-400 mb-3">
+            Containerized a simple Python Flask app using Docker and deployed it on AWS EC2, including automated builds via GitHub Actions.
+          </p>
+          <a href="#" class="accent hover:underline">View on GitHub →</a>
+        </div>
+
+        <div class="card p-6">
+          <h4 class="text-xl font-semibold mb-2 text-white">CI/CD Pipeline Setup</h4>
+          <p class="text-gray-400 mb-3">
+            Implemented a CI/CD pipeline using Jenkins to automate testing and deployment of a Node.js app to AWS Elastic Beanstalk.
+          </p>
+          <a href="" class="accent hover:underline">View on GitHub →</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="max-w-4xl mx-auto text-center px-6 py-20 relative z-10">
+    <h3 class="text-2xl font-bold mb-4 accent">Let's Connect</h3>
+    <p class="text-gray-400 mb-6">I'm open to remote internships and cloud-related collaborations.</p>
+    <div class="space-x-4">
+      <a href="mailto:estherdomfeh88@gmail.com" class="bg-[#238636] px-5 py-3 rounded-lg text-white hover:bg-[#2ea043] transition">Email Me</a>
+      <a href="https://linkedin.com/in/your-link" class="border border-gray-600 px-5 py-3 rounded-lg text-gray-300 hover:text-white transition">LinkedIn</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center py-6 border-t border-gray-800 text-gray-500 text-sm relative z-10">
+    © 2025 Esther Domfeh | Built with 🖤 using HTML, Tailwind CSS & AWS
   </footer>
+
+  <!-- Star Generation Script -->
+  <script>
+    const starsContainer = document.querySelector('.stars');
+    const numStars = 120;
+
+    for (let i = 0; i < numStars; i++) {
+      const star = document.createElement('div');
+      star.classList.add('star');
+      star.style.top = Math.random() * 100 + '%';
+      star.style.left = Math.random() * 100 + '%';
+      star.style.animationDelay = Math.random() * 5 + 's';
+      star.style.width = Math.random() * 2 + 1 + 'px';
+      star.style.height = star.style.width;
+      starsContainer.appendChild(star);
+    }
+  </script>
+
 </body>
 </html>
-
