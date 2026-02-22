@@ -8,7 +8,7 @@ Check out the live website here: [https://khalidhashim.com](https://khalidhashim
 
 ## 💻 About
 
-I am a **Computer Science graduate and AWS Cloud Engineer** with hands-on experience in core AWS services including:
+I am a **Computer Science graduate and AWS Cloud Engineer** with hands-on experience in core AWS services including: 
 
 - S3, CloudFront, Lambda, EC2, DynamoDB, CloudWatch, SNS, Route 53, IAM, CloudFormation 
 
