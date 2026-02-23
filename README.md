@@ -18,6 +18,7 @@ This portfolio highlights my projects and skills in **cloud computing, automatio
 ## 📂 Repo Structure
 
 khalidhashim1010/
+
 ├── frontend/ # HTML, CSS, images for the static website 
 
 ├── backend/ # Lambda functions (if any) 
@@ -25,8 +26,6 @@ khalidhashim1010/
 ├── .github/workflows/ # GitHub Actions workflow for deployment 
 
 └── README.md # You are here 
-
-
 
 ## 🚀 Deployment
 
