@@ -1,3 +1,6 @@
+terraform import aws_s3_bucket.portfolio khalidhashim.com
+terraform import aws_s3_bucket_public_access_block.portfolio khalidhashim.com
+
 resource "aws_s3_bucket" "portfolio" {
   bucket = "khalidhashim.com"
 }
