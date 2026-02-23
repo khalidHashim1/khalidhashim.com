@@ -11,30 +11,37 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # 1️⃣ Checkout your repository
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      # 2️⃣ Setup Terraform
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
         with:
           terraform_version: 1.5.7
 
+      # 3️⃣ Configure AWS to access the backend S3 (us-east-1)
       - name: Configure AWS
         uses: aws-actions/configure-aws-credentials@v2
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-1 # for testing the issue of bucket owned by you>. 
+          aws-region: us-east-1   # Must match your S3 state bucket region
 
+      # 4️⃣ Initialize Terraform backend & providers
       - name: Terraform Init
         run: terraform -chdir=terraform init -input=false -reconfigure
-        
+
+      # 5️⃣ Verify remote state is loaded
       - name: Terraform State List
         run: terraform -chdir=terraform state list
-  
+
+      # 6️⃣ Terraform Plan (to preview changes)
       - name: Terraform Plan
         run: terraform -chdir=terraform plan
 
+      # 7️⃣ Terraform Apply only on main branch
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main'
         run: terraform -chdir=terraform apply -auto-approve
