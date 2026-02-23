@@ -28,7 +28,10 @@ jobs:
 
       - name: Terraform Init
         run: terraform -chdir=terraform init -input=false -reconfigure
-
+        
+      - name: Terraform State List
+        run: terraform -chdir=terraform state list
+  
       - name: Terraform Plan
         run: terraform -chdir=terraform plan
 
