@@ -4,7 +4,7 @@ Welcome to my personal portfolio repository! This repo contains the **static HTM
 
 ## 🌐 Live Site
 
-Check out the live website here: [https://khalidhashim.com](https://khalidhashim.com)
+Check out the live website here: [https://khalidhashim.com](https://khalidhashim.com) 
 
 ## 💻 About
 
