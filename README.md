@@ -6,7 +6,7 @@ Welcome to my personal portfolio repository! This repo contains the **static HTM
 
 Check out the live website here: [https://khalidhashim.com](https://khalidhashim.com) 
 
-## 💻 About 
+## 💻 About
 
 I am a **Computer Science graduate and AWS Cloud Engineer** with hands-on experience in core AWS services including: 
 
