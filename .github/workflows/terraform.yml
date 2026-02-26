@@ -37,19 +37,28 @@ jobs:
       - name: Terraform Init
         run: terraform -chdir=terraform init -input=false -reconfigure
 
-      # ✅ 5️⃣ Format check (NEW)
+      # ✅ 5️⃣ Select Workspace Based on Branch
+      - name: Set Terraform Workspace
+        run: |
+          if [ "${{ github.ref }}" == "refs/heads/main" ]; then
+            terraform -chdir=terraform workspace select prod || terraform -chdir=terraform workspace new prod
+          else
+            terraform -chdir=terraform workspace select dev || terraform -chdir=terraform workspace new dev
+          fi
+
+      # 6️⃣ Format check
       - name: Terraform Format Check
         run: terraform -chdir=terraform fmt -check -recursive
 
-      # ✅ 6️⃣ Validate configuration (NEW)
+      # 7️⃣ Validate
       - name: Terraform Validate
         run: terraform -chdir=terraform validate
 
-      # 7️⃣ Plan and save output
+      # 8️⃣ Plan and save
       - name: Terraform Plan
         run: terraform -chdir=terraform plan -out=tfplan
 
-      # 8️⃣ Apply only on main
+      # 9️⃣ Apply only on main (prod)
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main'
         run: terraform -chdir=terraform apply -auto-approve tfplan
