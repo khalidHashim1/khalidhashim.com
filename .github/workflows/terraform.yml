@@ -6,12 +6,16 @@ on:
       - main
       - dev
 
+concurrency:
+  group: terraform-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   terraform:
     runs-on: ubuntu-latest
 
     steps:
-      # 1️⃣ Checkout your repository
+      # 1️⃣ Checkout repository
       - name: Checkout repository
         uses: actions/checkout@v3
 
@@ -21,27 +25,31 @@ jobs:
         with:
           terraform_version: 1.5.7
 
-      # 3️⃣ Configure AWS to access the backend S3 (us-east-1)
+      # 3️⃣ Configure AWS credentials
       - name: Configure AWS
         uses: aws-actions/configure-aws-credentials@v2
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-1   # Must match your S3 state bucket region
+          aws-region: us-east-1
 
-      # 4️⃣ Initialize Terraform backend & providers
+      # 4️⃣ Initialize Terraform
       - name: Terraform Init
         run: terraform -chdir=terraform init -input=false -reconfigure
 
-      # 5️⃣ Verify remote state is loaded
-      - name: Terraform State List
-        run: terraform -chdir=terraform state list
+      # ✅ 5️⃣ Format check (NEW)
+      - name: Terraform Format Check
+        run: terraform -chdir=terraform fmt -check -recursive
 
-      # 6️⃣ Terraform Plan (to preview changes)
+      # ✅ 6️⃣ Validate configuration (NEW)
+      - name: Terraform Validate
+        run: terraform -chdir=terraform validate
+
+      # 7️⃣ Plan and save output
       - name: Terraform Plan
-        run: terraform -chdir=terraform plan
+        run: terraform -chdir=terraform plan -out=tfplan
 
-      # 7️⃣ Terraform Apply only on main branch
+      # 8️⃣ Apply only on main
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main'
-        run: terraform -chdir=terraform apply -auto-approve
+        run: terraform -chdir=terraform apply -auto-approve tfplan
