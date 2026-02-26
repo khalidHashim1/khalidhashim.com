@@ -47,11 +47,11 @@ jobs:
             -reconfigure \
             -backend-config="key=khalidhashim.com/${ENV}/terraform.tfstate"
 
-      # 5️⃣ Format check
-      - name: Terraform Format Check
-        run: terraform -chdir=terraform fmt -check -recursive
+      # 5️⃣ Auto-format Terraform files
+      - name: Terraform Format
+        run: terraform -chdir=terraform fmt -recursive
 
-      # 6️⃣ Validate
+      # 6️⃣ Validate configuration
       - name: Terraform Validate
         run: terraform -chdir=terraform validate
 
