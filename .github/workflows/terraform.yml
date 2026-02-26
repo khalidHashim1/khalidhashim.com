@@ -33,32 +33,33 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
 
-      # 4️⃣ Initialize Terraform
+      # 4️⃣ Initialize Terraform backend with branch-based state file
       - name: Terraform Init
-        run: terraform -chdir=terraform init -input=false -reconfigure
-
-      # ✅ 5️⃣ Select Workspace Based on Branch
-      - name: Set Terraform Workspace
         run: |
           if [ "${{ github.ref }}" == "refs/heads/main" ]; then
-            terraform -chdir=terraform workspace select prod || terraform -chdir=terraform workspace new prod
+            ENV=prod
           else
-            terraform -chdir=terraform workspace select dev || terraform -chdir=terraform workspace new dev
+            ENV=dev
           fi
 
-      # 6️⃣ Format check
+          terraform -chdir=terraform init \
+            -input=false \
+            -reconfigure \
+            -backend-config="key=khalidhashim.com/${ENV}/terraform.tfstate"
+
+      # 5️⃣ Format check
       - name: Terraform Format Check
         run: terraform -chdir=terraform fmt -check -recursive
 
-      # 7️⃣ Validate
+      # 6️⃣ Validate
       - name: Terraform Validate
         run: terraform -chdir=terraform validate
 
-      # 8️⃣ Plan and save
+      # 7️⃣ Plan and save output
       - name: Terraform Plan
         run: terraform -chdir=terraform plan -out=tfplan
 
-      # 9️⃣ Apply only on main (prod)
+      # 8️⃣ Apply only on main (prod)
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main'
         run: terraform -chdir=terraform apply -auto-approve tfplan
