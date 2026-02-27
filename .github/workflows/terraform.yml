@@ -59,6 +59,15 @@ jobs:
       - name: Terraform Plan
         run: terraform -chdir=terraform plan -out=tfplan
 
+      - name: Show AWS Identity
+        run: aws sts get-caller-identity
+
+      - name: Terraform Init
+        run: terraform -chdir=terraform init -reconfigure
+      
+      - name: Show Terraform State
+        run: terraform -chdir=terraform state list
+
       # 8️⃣ Apply only on main (prod)
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main'
