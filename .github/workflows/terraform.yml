@@ -4,10 +4,10 @@ on:
   push:
     branches:
       - main
-      - dev
+  pull_request:
 
 concurrency:
-  group: terraform-${{ github.ref }}
+  group: terraform-prod
   cancel-in-progress: false
 
 jobs:
@@ -26,49 +26,30 @@ jobs:
           terraform_version: 1.5.7
 
       # 3️⃣ Configure AWS credentials
-      - name: Configure AWS
+      - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
 
-      # 4️⃣ Initialize Terraform backend with branch-based state file
+      # 4️⃣ Initialize Terraform (uses backend.tf)
       - name: Terraform Init
-        run: |
-          if [ "${{ github.ref }}" == "refs/heads/main" ]; then
-            ENV=prod
-          else
-            ENV=dev
-          fi
+        run: terraform -chdir=terraform init -input=false -reconfigure
 
-          terraform -chdir=terraform init \
-            -input=false \
-            -reconfigure \
-            -backend-config="key=khalidhashim.com/${ENV}/terraform.tfstate"
-
-      # 5️⃣ Auto-format Terraform files
-      - name: Terraform Format
-        run: terraform -chdir=terraform fmt -recursive
+      # 5️⃣ Format check
+      - name: Terraform Format Check
+        run: terraform -chdir=terraform fmt -check -recursive
 
       # 6️⃣ Validate configuration
       - name: Terraform Validate
         run: terraform -chdir=terraform validate
 
-      # 7️⃣ Plan and save output
+      # 7️⃣ Plan
       - name: Terraform Plan
-        run: terraform -chdir=terraform plan -out=tfplan
+        run: terraform -chdir=terraform plan
 
-      - name: Show AWS Identity
-        run: aws sts get-caller-identity
-
-      - name: Terraform Init
-        run: terraform -chdir=terraform init -reconfigure
-      
-      - name: Show Terraform State
-        run: terraform -chdir=terraform state list
-
-      # 8️⃣ Apply only on main (prod)
+      # 8️⃣ Apply (only on main branch)
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main'
-        run: terraform -chdir=terraform apply -auto-approve tfplan
+        run: terraform -chdir=terraform apply -auto-approve
