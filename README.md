@@ -2,7 +2,7 @@
 
 Welcome to my personal portfolio repository! This repo contains the **static HTML/CSS portfolio website** that showcases my projects, skills, and AWS experience.
 
-## 🌐 Live Site 
+## 🌐 Live Site  
 
 Check out the live website here: [https://khalidhashim.com](https://khalidhashim.com) 
 
