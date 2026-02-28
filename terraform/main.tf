@@ -3,7 +3,7 @@
 ##############################
 provider "aws" {
   alias  = "website"
-  region = "eu-north-1"  # Stockholm
+  region = "eu-north-1" # Stockholm
 }
 
 ##############################
@@ -11,7 +11,7 @@ provider "aws" {
 ##############################
 resource "aws_s3_bucket" "portfolio" {
   provider = aws.website
-  bucket = "khalidhashim.com"
+  bucket   = "khalidhashim.com"
 
   tags = {
     Name        = "Portfolio Website"
@@ -24,7 +24,7 @@ resource "aws_s3_bucket" "portfolio" {
 ##############################
 resource "aws_s3_bucket_public_access_block" "portfolio" {
   provider = aws.website
-  bucket = aws_s3_bucket.portfolio.id
+  bucket   = aws_s3_bucket.portfolio.id
 
   block_public_acls       = true
   block_public_policy     = true
@@ -36,23 +36,23 @@ resource "aws_s3_bucket_public_access_block" "portfolio" {
 # CloudFront Origin Access Control (OAC)
 ##############################
 resource "aws_cloudfront_origin_access_control" "oac" {
-  provider                         = aws.website
+  provider                          = aws.website
   name                              = "portfolio-oac"
   description                       = "OAC for khalidhashim.com"
-  signing_behavior                   = "always"
-  signing_protocol                   = "sigv4"
-  origin_access_control_origin_type  = "s3"
+  signing_behavior                  = "always"
+  signing_protocol                  = "sigv4"
+  origin_access_control_origin_type = "s3"
 }
 
 ##############################
 # CloudFront Distribution
 ##############################
 resource "aws_cloudfront_distribution" "portfolio" {
-  provider         = aws.website
-  enabled          = true
-  is_ipv6_enabled  = true
-  comment          = "Portfolio CloudFront Distribution"
-  price_class      = "PriceClass_All"
+  provider            = aws.website
+  enabled             = true
+  is_ipv6_enabled     = true
+  comment             = "Portfolio CloudFront Distribution"
+  price_class         = "PriceClass_All"
   wait_for_deployment = true
   default_root_object = "index.html"
 
@@ -61,8 +61,8 @@ resource "aws_cloudfront_distribution" "portfolio" {
   ]
 
   origin {
-    origin_id   = "S3-khalidhashim"
-    domain_name = aws_s3_bucket.portfolio.bucket_regional_domain_name
+    origin_id                = "S3-khalidhashim"
+    domain_name              = aws_s3_bucket.portfolio.bucket_regional_domain_name
     origin_access_control_id = aws_cloudfront_origin_access_control.oac.id
   }
 
@@ -85,9 +85,9 @@ resource "aws_cloudfront_distribution" "portfolio" {
   }
 
   viewer_certificate {
-    acm_certificate_arn = "arn:aws:acm:us-east-1:665832050840:certificate/0a85c5bc-3c94-41d4-add2-d8b58507511c"
-    ssl_support_method  = "sni-only"
-    minimum_protocol_version = "TLSv1.2_2021"
+    acm_certificate_arn            = "arn:aws:acm:us-east-1:665832050840:certificate/0a85c5bc-3c94-41d4-add2-d8b58507511c"
+    ssl_support_method             = "sni-only"
+    minimum_protocol_version       = "TLSv1.2_2021"
     cloudfront_default_certificate = false
   }
 
@@ -130,9 +130,9 @@ resource "aws_s3_bucket_policy" "portfolio_policy" {
 ##############################
 resource "aws_route53_record" "root" {
   provider = aws.website
-  zone_id = "Z04058082YY1290VSKWE8"
-  name    = "khalidhashim.com"
-  type    = "A"
+  zone_id  = "Z04058082YY1290VSKWE8"
+  name     = "khalidhashim.com"
+  type     = "A"
 
   alias {
     name                   = aws_cloudfront_distribution.portfolio.domain_name
