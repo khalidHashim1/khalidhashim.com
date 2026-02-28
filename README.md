@@ -15,7 +15,7 @@ I am a **Computer Science graduate and AWS Cloud Engineer** with hands-on experi
 
 This portfolio highlights my projects and skills in **cloud computing, automation, and scalable system design**.
 
-## 📂 Repo Structure
+## 📂 Repo Structure 
 
 khalidhashim1010/
 
