@@ -27,10 +27,15 @@ This portfolio highlights my projects, cloud computing skills, automation, and s
 khalidhashim1010/
 
 ├── terraform/       # Terraform configuration for AWS infrastructure
+
 ├── frontend/        # HTML, CSS, images for the static website
+
 ├── backend/         # Lambda functions (if any)
+
 ├── .github/workflows/ # GitHub Actions workflows
+
 └── README.md        # You are here
+
 
 ------------------------------------------------------
 
