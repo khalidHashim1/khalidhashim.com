@@ -24,7 +24,7 @@ This portfolio highlights my projects, cloud computing skills, automation, and s
 ------------------------------------------------------
 
 📂 Repo Structure
-khalidhashim1010/
+khalidhashim.com/
 
 ├── terraform/       # Terraform configuration for AWS infrastructure
 
