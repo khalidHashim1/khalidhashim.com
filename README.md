@@ -1,49 +1,52 @@
-Khalid Hashim Portfolio & Terraform Infrastructure
+Khalid Hashim Portfolio & AWS Terraform Infrastructure
+======================================================
 
-Welcome to my personal portfolio repository! This repo contains my portfolio website and Terraform infrastructure code for AWS deployment and automation.
+Welcome! This repository hosts my personal portfolio website and the Terraform code powering its AWS infrastructure. 
+
+The site is deployed as a static website on S3, delivered globally via CloudFront, with Lambda functions (if any) managed via CI/CD. Terraform ensures all infrastructure is versioned, reproducible, and production-safe, while GitHub Actions automates plans and deployments only when relevant changes occur.
+
+------------------------------------------------------
 
 🌐 Live Site
 Check out the live website here: https://khalidhashim.com
 
-💻 About
-I am a Computer Science graduate and AWS Cloud Engineer with hands-on experience in core AWS services and Infrastructure as Code (IaC), including:
+------------------------------------------------------
 
-- AWS Services: S3, CloudFront, Lambda, EC2, Route 53, ACM, IAM, CloudWatch, SNS
-- Infrastructure as Code: Terraform automation for provisioning, managing, and updating AWS resources
-- CI/CD Automation: GitHub Actions for automated Terraform plans and deployments
+💻 About
+I am a Computer Science graduate and AWS Cloud Engineer with hands-on experience in core AWS services including:
+
+- S3, CloudFront, Lambda, EC2, DynamoDB, CloudWatch, SNS, Route 53, IAM, CloudFormation
+- Terraform Infrastructure as Code (IaC) for portfolio automation
+- CI/CD pipelines via GitHub Actions for safe deployment
+
+This portfolio highlights my projects, cloud computing skills, automation, and scalable system design.
+
+------------------------------------------------------
 
 📂 Repo Structure
-
 khalidhashim1010/
-├── terraform/        # Terraform files for AWS infrastructure
-│   ├── main.tf       # Core resources: S3, CloudFront, Route 53, ACM
-│   ├── providers.tf  # AWS provider configuration
-│   └── backend.tf    # Remote state configuration
-├── frontend/         # HTML, CSS, images for static website
-├── backend/          # Lambda functions (if any)
-├── .github/workflows/# GitHub Actions workflow for Terraform and deployment
-└── README.md         # You are here
 
-🚀 Deployment & Automation
+├── terraform/       # Terraform configuration for AWS infrastructure
+├── frontend/        # HTML, CSS, images for the static website
+├── backend/         # Lambda functions (if any)
+├── .github/workflows/ # GitHub Actions workflows
+└── README.md        # You are here
 
-- Frontend: Static website deployed to S3 and distributed globally via CloudFront
-- Infrastructure: Managed via Terraform with remote state stored in S3
-- CI/CD: GitHub Actions automates safely:
-    - Terraform plan generation (manual apply recommended for production)
-    - Sync frontend files to S3 only when frontend files change
-    - Deploy Lambda functions (if any)
-    - CloudFront cache invalidation only if website content changes
+------------------------------------------------------
 
-⚡ Terraform Features Highlighted
+🚀 Deployment
+The website and infrastructure are managed via Terraform and deployed through GitHub Actions:
 
-- Private S3 bucket with public access blocked
-- CloudFront with Origin Access Control (OAC)
-- ACM certificates with DNS validation via Route 53
-- Route 53 alias records pointing to CloudFront distributions
-- Safe infrastructure changes via manual approval before apply
+- Terraform ensures reproducible infrastructure (S3, CloudFront, Route53, ACM, Lambda, etc.)
+- Frontend files are synced to S3 only if there are changes
+- Lambda functions updated only on relevant changes
+- CloudFront invalidation happens only when needed
+- AWS credentials are securely stored in GitHub Secrets
+
+------------------------------------------------------
 
 📬 Contact
-Email: khalidhashim1422@gmail.com
-LinkedIn: https://www.linkedin.com/in/khalid-hashim-8639a7271
+Email: khalidhashim1422@gmail.com  
+LinkedIn: https://www.linkedin.com/in/khalid-hashim-8639a7271  
 
-© 2025 Khalid Hashim | Built with ❤️ using HTML, Tailwind CSS & AWS + Terraform
+© 2025 Khalid Hashim | Built with ❤️ using HTML, Tailwind CSS & AWS
