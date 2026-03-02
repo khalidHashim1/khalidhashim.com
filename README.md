@@ -30,7 +30,7 @@ khalidhashim1010/
 
 ├── frontend/        # HTML, CSS, images for the static website
 
-├── backend/         # Lambda functions (if any)
+├── backend/         # Lambda functions
 
 ├── .github/workflows/ # GitHub Actions workflows
 
