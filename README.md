@@ -15,7 +15,7 @@ Check out the live website here: https://khalidhashim.com
 💻 About
 I am a Computer Science graduate and AWS Cloud Engineer with hands-on experience in core AWS services including:
 
-- S3, CloudFront, Lambda, EC2, DynamoDB, CloudWatch, SNS, Route 53, IAM, CloudFormation
+- S3, CloudFront, Lambda, EC2, DynamoDB, CloudWatch, SNS, Route 53, IAM
 - Terraform Infrastructure as Code (IaC) for portfolio automation
 - CI/CD pipelines via GitHub Actions for safe deployment
 
