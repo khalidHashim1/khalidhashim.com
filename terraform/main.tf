@@ -9,6 +9,7 @@ resource "aws_s3_bucket" "portfolio" {
   tags = {
     Name        = "Portfolio Website"
     Environment = "prod"
+    Learning    = "terraform"
   }
 }
 
